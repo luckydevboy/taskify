@@ -16,6 +16,12 @@ export class TasksService {
     this.saveTasks();
   }
 
+  updateStatus(id: string) {
+    const index = this.tasks.findIndex((task) => task.id === id);
+    this.tasks[index].completed = !this.tasks[index].completed;
+    this.saveTasks();
+  }
+
   deleteTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
     this.saveTasks();

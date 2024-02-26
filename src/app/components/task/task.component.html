@@ -1,7 +1,30 @@
 <div
   class="mb-3 flex items-center justify-between py-2 px-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
 >
-  <p class="text-sm">{{ task.text }}</p>
+  <div
+    class="flex items-center gap-x-2 cursor-pointer"
+    (click)="this.tasksService.updateStatus(task.id)"
+  >
+    <svg
+      class="w-6 h-6"
+      [ngClass]="
+        task.completed ? 'text-green-500' : 'text-gray-300 dark:text-white'
+      "
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm13.7-1.3a1 1 0 0 0-1.4-1.4L11 12.6l-1.8-1.8a1 1 0 0 0-1.4 1.4l2.5 2.5c.4.4 1 .4 1.4 0l4-4Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+    <p class="text-sm" [ngClass]="{ 'line-through': task.completed }">
+      {{ task.text }}
+    </p>
+  </div>
   <div>
     <button
       [id]="'dropdownButton_' + task.id"
@@ -35,9 +58,7 @@
             >Edit</a
           >
         </li>
-        <li
-          (click)="this.tasksService.deleteTask(task.id)"
-        >
+        <li (click)="this.tasksService.deleteTask(task.id)">
           <a
             href="#"
             class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
@@ -56,8 +77,12 @@
   header="<h1 class='text-red-500'>Delete</h1>"
   footer="
   <div class='text-end'>
-    <button [attr.data-modal-hide]='delete-modal_{{task.id}}' type='button' class='py-2.5 px-5 mr-2  text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'>Cancel</button>
-    <button [attr.data-modal-hide]='delete-modal_{{task.id}}' type='button' class='text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'>Delete</button>
+    <button [attr.data-modal-hide]='delete-modal_{{
+    task.id
+  }}' type='button' class='py-2.5 px-5 mr-2  text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'>Cancel</button>
+    <button [attr.data-modal-hide]='delete-modal_{{
+    task.id
+  }}' type='button' class='text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'>Delete</button>
   </div>
   "
   body="Are your sure want to delete this task?"

@@ -23,6 +23,7 @@ export class AddTaskComponent {
       id: uuidv4(),
       text: task,
       createdAt: today.toISOString().split('T')[0],
+      completed: false,
     });
     this.newTask = '';
   }
