@@ -36,8 +36,7 @@
           >
         </li>
         <li
-          [attr.data-modal-target]="'delete-modal_' + task.id"
-          [attr.data-modal-toggle]="'delete-modal_' + task.id"
+          (click)="this.tasksService.deleteTask(task.id)"
         >
           <a
             href="#"
@@ -52,6 +51,7 @@
 
 <!-- Delete Modal -->
 <!-- FIXME: Find a way to add attribute binding to the below buttons for the data-modal-hide attribute  -->
+<!-- At the moment delete action is done directly -->
 <app-modal
   header="<h1 class='text-red-500'>Delete</h1>"
   footer="

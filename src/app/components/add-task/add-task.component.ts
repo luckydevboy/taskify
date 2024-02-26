@@ -19,7 +19,7 @@ export class AddTaskComponent {
 
   onAddNewTask(task: string) {
     const today = new Date();
-    this.tasksService.addNewTask({
+    this.tasksService.addTask({
       id: uuidv4(),
       text: task,
       createdAt: today.toISOString().split('T')[0],
