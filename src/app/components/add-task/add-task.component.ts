@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Task } from '../interfaces';
+import { Task } from '../../interfaces';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-add-task',
@@ -16,6 +17,7 @@ export class AddTaskComponent {
   onAddNewTask(task: string) {
     const today = new Date();
     this.addTaskEvent.emit({
+      id: uuidv4(),
       text: task,
       createdAt: today.toISOString().split('T')[0],
     });
