@@ -16,9 +16,17 @@ export class TaskComponent implements AfterViewInit {
   @Input() task: Task = { id: '', text: '', createdAt: '', completed: false };
   @Input() index!: number;
 
-  constructor(public tasksService: TasksService) {}
+  constructor(private tasksService: TasksService) {}
 
   ngAfterViewInit() {
     initFlowbite();
+  }
+
+  updateStatus(id: string) {
+    this.tasksService.updateStatus(id);
+  }
+
+  deleteTask(id: string) {
+    this.tasksService.deleteTask(id);
   }
 }
