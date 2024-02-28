@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -25,9 +25,27 @@ import { TasksService } from './services/tasks/tasks.service';
   providers: [TasksService],
 })
 export class AppComponent implements OnInit {
-  constructor(public tasksService: TasksService) {}
+  constructor(
+    // FIXME: Is it correct to use public instead of private and pass tasksService.tasks to tasks variable?
+    public tasksService: TasksService,
+    private activatedRoute: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     initFlowbite();
+    this.activatedRoute.queryParamMap.subscribe((params) => {
+      const completed = params.get('completed');
+
+      switch (completed) {
+        case 'true':
+          this.tasksService.filterTasksByStatus(true);
+          break;
+        case 'false':
+          this.tasksService.filterTasksByStatus(false);
+          break;
+        default:
+          this.tasksService.filterTasksByStatus(null);
+      }
+    });
   }
 }

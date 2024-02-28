@@ -3,7 +3,7 @@
 >
   <div
     class="flex items-center gap-x-2 cursor-pointer"
-    (click)="this.tasksService.updateStatus(task.id)"
+    (click)="this.updateStatus(task.id)"
   >
     <svg
       class="w-6 h-6"
@@ -58,7 +58,7 @@
             >Edit</a
           >
         </li>
-        <li (click)="this.tasksService.deleteTask(task.id)">
+        <li (click)="this.deleteTask(task.id)">
           <a
             href="#"
             class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
