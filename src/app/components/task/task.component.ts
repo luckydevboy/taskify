@@ -23,7 +23,7 @@ export class TaskComponent implements AfterViewInit {
   }
 
   updateStatus(id: string) {
-    this.tasksService.updateStatus(id);
+    this.tasksService.updateTaskStatus(id);
   }
 
   deleteTask(id: string) {

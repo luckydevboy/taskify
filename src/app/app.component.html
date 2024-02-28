@@ -2,7 +2,7 @@
   <main class="p-4 md:ml-64 h-dvh pt-20">
     <app-add-task></app-add-task>
     <app-task
-      *ngFor="let task of this.tasks; let index = index"
+      *ngFor="let task of this.tasksService.tasks; let index = index"
       [task]="task"
       [index]="index"
     ></app-task>
