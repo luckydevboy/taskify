@@ -9,11 +9,7 @@
       <div
         class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
       >
-        <h3
-          class="text-xl font-semibold text-gray-900 dark:text-white"
-          *ngIf="header"
-          [innerHTML]="sanitized.bypassSecurityTrustHtml(header)"
-        ></h3>
+        <header class="text-xl font-semibold dark:text-white"><ng-content select="[header]"></ng-content></header>
         <button
           type="button"
           class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -37,16 +33,14 @@
           <span class="sr-only">Close modal</span>
         </button>
       </div>
-      <div
-        class="p-4 md:p-5"
-        *ngIf="body"
-        [innerHTML]="sanitized.bypassSecurityTrustHtml(body)"
-      ></div>
-      <div
-        class="p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
-        *ngIf="footer"
-        [innerHTML]="sanitized.bypassSecurityTrustHtml(footer)"
-      ></div>
+      <main class="p-4 md:p-5">
+        <ng-content select="[body]"></ng-content>
+      </main>
+      <footer
+        class="text-end p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
+      >
+        <ng-content select="[footer]"></ng-content>
+      </footer>
     </div>
   </div>
 </div>

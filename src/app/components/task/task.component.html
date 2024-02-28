@@ -58,7 +58,10 @@
             >Edit</a
           >
         </li>
-        <li (click)="this.deleteTask(task.id)">
+        <li
+          [attr.data-modal-target]="'delete-modal_' + task.id"
+          [attr.data-modal-toggle]="'delete-modal_' + task.id"
+        >
           <a
             href="#"
             class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
@@ -71,20 +74,33 @@
 </div>
 
 <!-- Delete Modal -->
-<!-- FIXME: Find a way to add attribute binding to the below buttons for the data-modal-hide attribute  -->
-<!-- At the moment delete action is done directly -->
 <app-modal
-  header="<h1 class='text-red-500'>Delete</h1>"
   footer="
   <div class='text-end'>
-    <button [attr.data-modal-hide]='delete-modal_{{
-    task.id
-  }}' type='button' class='py-2.5 px-5 mr-2  text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'>Cancel</button>
-    <button [attr.data-modal-hide]='delete-modal_{{
-    task.id
-  }}' type='button' class='text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'>Delete</button>
-  </div>
+    </div>
   "
-  body="Are your sure want to delete this task?"
+  body=""
   [id]="'delete-modal_' + task.id"
-></app-modal>
+>
+  <ng-container header>
+    <h3 class="text-red-500">Delete</h3>
+  </ng-container>
+  <ng-container body>Are you sure want to delete this task?</ng-container>
+  <ng-container footer>
+    <button
+      [attr.data-modal-hide]="'delete-modal_' + task.id"
+      type="button"
+      class="py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+    >
+      Cancel
+    </button>
+    <button
+      [attr.data-modal-hide]="'delete-modal_' + task.id"
+      (click)="this.deleteTask(task.id)"
+      type="button"
+      class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+    >
+      Delete
+    </button>
+  </ng-container>
+</app-modal>
