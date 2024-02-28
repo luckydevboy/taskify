@@ -19,7 +19,7 @@ export class TasksService {
 
   addTask(task: Task) {
     this.tasks.push(task);
-    this.tasksChanged.emit(this.tasks);
+    this.tasksChanged.emit([...this.tasks]);
     this.saveTasks();
     this.router.navigate(['/']);
   }
@@ -27,23 +27,23 @@ export class TasksService {
   updateTaskStatus(id: string) {
     const index = this.tasks.findIndex((task) => task.id === id);
     this.tasks[index].completed = !this.tasks[index].completed;
-    this.tasksChanged.emit(this.tasks);
+    this.tasksChanged.emit([...this.tasks]);
     this.saveTasks();
   }
 
   deleteTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
-    this.tasksChanged.emit(this.tasks);
+    this.tasksChanged.emit([...this.tasks]);
     this.saveTasks();
   }
 
   filterTasksByStatus(completed: boolean | null) {
     if (completed !== null) {
-      this.tasksChanged.emit(
-        this.tasks.filter((task) => task.completed === completed),
-      );
+      this.tasksChanged.emit([
+        ...this.tasks.filter((task) => task.completed === completed),
+      ]);
     } else {
-      this.tasksChanged.emit(this.tasks);
+      this.tasksChanged.emit([...this.tasks]);
     }
   }
 
