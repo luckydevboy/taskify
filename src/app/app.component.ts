@@ -8,6 +8,7 @@ import { TaskComponent } from './components/task/task.component';
 import { NgForOf } from '@angular/common';
 import { ModalComponent } from './components/ui/modal/modal.component';
 import { TasksService } from './services/tasks/tasks.service';
+import { Task } from './interfaces';
 
 @Component({
   selector: 'app-root',
@@ -25,14 +26,22 @@ import { TasksService } from './services/tasks/tasks.service';
   providers: [TasksService],
 })
 export class AppComponent implements OnInit {
+  tasks!: Task[];
+
   constructor(
-    // FIXME: Is it correct to use public instead of private and pass tasksService.tasks to tasks variable?
-    public tasksService: TasksService,
+    // FIXME: Why not using public?
+    private tasksService: TasksService,
     private activatedRoute: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
     initFlowbite();
+
+    this.tasks = this.tasksService.getTasks();
+    this.tasksService.tasksChanged.subscribe((tasks: Task[]) => {
+      this.tasks = tasks;
+    });
+
     this.activatedRoute.queryParamMap.subscribe((params) => {
       const completed = params.get('completed');
 
