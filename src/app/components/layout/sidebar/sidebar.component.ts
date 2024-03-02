@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QueryHandlerService } from '../../../services/query-handler/query-handler.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NgClass } from '@angular/common';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -40,4 +41,6 @@ export class SidebarComponent implements OnInit {
   updateQueryParams(params: Params) {
     this.queryHandlerService.handleQuery(params);
   }
+
+  protected readonly take = take;
 }

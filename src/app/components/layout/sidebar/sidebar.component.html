@@ -10,14 +10,16 @@
         (click)="updateQueryParams({ completed: null })"
       >
         <svg
-          class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-blue-700 dark:group-hover:text-white"
+          class="w-6 h-6 transition duration-75 group-hover:text-blue-700 dark:group-hover:text-white"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          [ngClass]="{
-            'text-blue-700 dark:text-white': status === 'all'
-          }"
+          [ngClass]="
+            status === 'all'
+              ? 'text-blue-700 dark:text-white'
+              : 'text-gray-500 dark:text-gray-400'
+          "
         >
           <path
             stroke="currentColor"
@@ -28,10 +30,12 @@
           />
         </svg>
         <span
-          [ngClass]="{
-            'text-blue-700 dark:text-white': status === 'all'
-          }"
-          class="ml-3 text-gray-500 dark:text-gray-400 group-hover:text-blue-700 dark:group-hover:text-white"
+          [ngClass]="
+            status === 'all'
+              ? 'text-blue-700 dark:text-white'
+              : 'text-gray-500 dark:text-gray-400'
+          "
+          class="ml-3 group-hover:text-blue-700 dark:group-hover:text-white"
           >All Tasks</span
         >
       </li>
@@ -40,14 +44,16 @@
         (click)="updateQueryParams({ completed: false })"
       >
         <svg
-          class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-blue-700 dark:group-hover:text-white"
+          class="w-6 h-6 transition duration-75 group-hover:text-blue-700 dark:group-hover:text-white"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          [ngClass]="{
-            'text-blue-700 dark:text-white': status === 'todos'
-          }"
+          [ngClass]="
+            status === 'todos'
+              ? 'text-blue-700 dark:text-white'
+              : 'text-gray-500 dark:text-gray-400'
+          "
         >
           <path
             stroke="currentColor"
@@ -58,10 +64,12 @@
           />
         </svg>
         <span
-          class="ml-3 text-gray-500 dark:text-gray-400 group-hover:text-blue-700 dark:group-hover:text-white"
-          [ngClass]="{
-            'text-blue-700 dark:text-white': status === 'todos'
-          }"
+          class="ml-3 group-hover:text-blue-700 dark:group-hover:text-white"
+          [ngClass]="
+            status === 'todos'
+              ? 'text-blue-700 dark:text-white'
+              : 'text-gray-500 dark:text-gray-400'
+          "
           >Todos</span
         >
       </li>
@@ -70,14 +78,16 @@
         class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer"
       >
         <svg
-          class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-blue-700 dark:group-hover:text-white"
+          class="w-6 h-6 transition duration-75 group-hover:text-blue-700 dark:group-hover:text-white"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          [ngClass]="{
-            'text-blue-700 dark:text-white': status === 'completed'
-          }"
+          [ngClass]="
+            status === 'completed'
+              ? 'text-blue-700 dark:text-white'
+              : 'text-gray-500 dark:text-gray-400'
+          "
         >
           <path
             stroke="currentColor"
@@ -88,10 +98,12 @@
           />
         </svg>
         <span
-          class="ml-3 text-gray-500 dark:text-gray-400 group-hover:text-blue-700 dark:group-hover:text-white"
-          [ngClass]="{
-            'text-blue-700 dark:text-white': status === 'completed'
-          }"
+          class="ml-3 group-hover:text-blue-700 dark:group-hover:text-white"
+          [ngClass]="
+            status === 'completed'
+              ? 'text-blue-700 dark:text-white'
+              : 'text-gray-500 dark:text-gray-400'
+          "
           >Completed Tasks</span
         >
       </li>
