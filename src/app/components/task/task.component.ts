@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Input } from '@angular/core';
 import { Task } from '../../interfaces';
 import { initFlowbite } from 'flowbite';
 import { ModalComponent } from '../ui/modal/modal.component';
-import { TasksService } from '../../services/tasks/tasks.service';
+import { TaskService } from './task.service';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -16,7 +16,7 @@ export class TaskComponent implements AfterViewInit {
   @Input() task: Task = { id: '', text: '', createdAt: '', completed: false };
   @Input() index!: number;
 
-  constructor(private tasksService: TasksService) {}
+  constructor(private tasksService: TaskService) {}
 
   ngAfterViewInit() {
     initFlowbite();

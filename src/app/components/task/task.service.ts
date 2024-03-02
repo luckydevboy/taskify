@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
-export class TasksService {
+export class TaskService {
   tasksChanged = new EventEmitter<Task[]>();
   private tasks: Task[] = [];
 
