@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Task } from '../../interfaces';
 import { v4 as uuidv4 } from 'uuid';
-import { TasksService } from '../../services/tasks/tasks.service';
+import { TaskService } from '../task/task.service';
 
 @Component({
   selector: 'app-add-task',
@@ -15,7 +15,7 @@ export class AddTaskComponent {
   newTask = '';
   @Output() addTaskEvent = new EventEmitter<Task>();
 
-  constructor(private tasksService: TasksService) {}
+  constructor(private tasksService: TaskService) {}
 
   onAddNewTask(task: string) {
     const today = new Date();
