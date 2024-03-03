@@ -13,7 +13,7 @@ import { NgClass } from '@angular/common';
   styleUrl: './task.component.css',
 })
 export class TaskComponent implements AfterViewInit {
-  @Input() task: Task = { id: '', text: '', createdAt: '', completed: false };
+  @Input() task: Task = { id: '', text: '', dueDate: '', completed: false };
   @Input() index!: number;
 
   constructor(private tasksService: TaskService) {}
