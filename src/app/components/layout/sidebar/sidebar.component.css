@@ -1,5 +1,4 @@
-.active-link {
-  span, svg {
-    @apply text-blue-700;
-  }
+.active-link span,
+.active-link svg {
+  @apply text-blue-700;
 }
