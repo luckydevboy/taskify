@@ -18,12 +18,10 @@ export class AddTaskComponent {
   constructor(private tasksService: TaskService) {}
 
   onAddNewTask(task: string) {
-    const today = new Date();
     this.tasksService.addTask({
       id: uuidv4(),
       text: task,
-      dueDate: today.toISOString().split('T')[0],
-      completed: false,
+      completed: 'false',
     });
     this.newTask = '';
   }

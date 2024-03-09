@@ -4,16 +4,18 @@ import { initFlowbite } from 'flowbite';
 import { ModalComponent } from '../ui/modal/modal.component';
 import { TaskService } from './task.service';
 import { NgClass } from '@angular/common';
+import { EditTaskComponent } from '../edit-task/edit-task.component';
+import { DeleteTaskComponent } from '../delete-task/delete-task.component';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [ModalComponent, NgClass],
+  imports: [ModalComponent, NgClass, EditTaskComponent, DeleteTaskComponent],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css',
 })
 export class TaskComponent implements AfterViewInit {
-  @Input() task: Task = { id: '', text: '', dueDate: '', completed: false };
+  @Input() task: Task = { id: '', text: '', dueDate: '', completed: 'false' };
   @Input() index!: number;
 
   constructor(private tasksService: TaskService) {}
@@ -24,9 +26,5 @@ export class TaskComponent implements AfterViewInit {
 
   updateStatus(id: string) {
     this.tasksService.updateTaskStatus(id);
-  }
-
-  deleteTask(id: string) {
-    this.tasksService.deleteTask(id);
   }
 }

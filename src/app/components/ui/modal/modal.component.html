@@ -9,7 +9,9 @@
       <div
         class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
       >
-        <header class="text-xl font-semibold dark:text-white"><ng-content select="[header]"></ng-content></header>
+        <header class="text-xl font-semibold dark:text-white">
+          <ng-content select="[header]"></ng-content>
+        </header>
         <button
           type="button"
           class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -36,6 +38,7 @@
       <main class="p-4 md:p-5">
         <ng-content select="[body]"></ng-content>
       </main>
+      <!--   FIXME: show footer when it's available   -->
       <footer
         class="text-end p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
       >

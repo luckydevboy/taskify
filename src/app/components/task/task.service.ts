@@ -26,7 +26,21 @@ export class TaskService {
 
   updateTaskStatus(id: string) {
     const index = this.tasks.findIndex((task) => task.id === id);
-    this.tasks[index].completed = !this.tasks[index].completed;
+    if (this.tasks[index].completed === 'true') {
+      this.tasks[index].completed = 'false';
+    } else {
+      this.tasks[index].completed = 'true';
+    }
+    this.tasksChanged.emit([...this.tasks]);
+    this.saveTasks();
+  }
+
+  updateTask(
+    id: string,
+    modifiedTask: Pick<Task, 'dueDate' | 'completed' | 'text'>,
+  ) {
+    const index = this.tasks.findIndex((task) => task.id === id);
+    this.tasks[index] = { id, ...modifiedTask };
     this.tasksChanged.emit([...this.tasks]);
     this.saveTasks();
   }
@@ -39,8 +53,11 @@ export class TaskService {
 
   filterTasksByStatus(completed: boolean | null) {
     if (completed !== null) {
+      // FIXME: Make it type safe when getting data from the form
       this.tasksChanged.emit([
-        ...this.tasks.filter((task) => task.completed === completed),
+        ...this.tasks.filter(
+          (task) => Boolean(task.completed) === Boolean(completed),
+        ),
       ]);
     } else {
       this.tasksChanged.emit([...this.tasks]);

@@ -8,7 +8,7 @@
     <svg
       class="w-6 h-6"
       [ngClass]="
-        task.completed ? 'text-green-500' : 'text-gray-300 dark:text-white'
+        task.completed === 'true' ? 'text-green-500' : 'text-gray-300 dark:text-white'
       "
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
         clip-rule="evenodd"
       />
     </svg>
-    <p class="text-sm" [ngClass]="{ 'line-through': task.completed }">
+    <p class="text-sm" [ngClass]="{ 'line-through': task.completed === 'true' }">
       {{ task.text }}
     </p>
   </div>
@@ -51,7 +51,10 @@
       class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
     >
       <ul class="py-2" [attr.aria-labelledby]="'dropdownButton_' + task.id">
-        <li>
+        <li
+          [attr.data-modal-target]="'edit-modal_' + task.id"
+          [attr.data-modal-toggle]="'edit-modal_' + task.id"
+        >
           <a
             href="#"
             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
@@ -73,34 +76,5 @@
   </div>
 </div>
 
-<!-- Delete Modal -->
-<app-modal
-  footer="
-  <div class='text-end'>
-    </div>
-  "
-  body=""
-  [id]="'delete-modal_' + task.id"
->
-  <ng-container header>
-    <h3 class="text-red-500">Delete</h3>
-  </ng-container>
-  <ng-container body>Are you sure want to delete this task?</ng-container>
-  <ng-container footer>
-    <button
-      [attr.data-modal-hide]="'delete-modal_' + task.id"
-      type="button"
-      class="py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-    >
-      Cancel
-    </button>
-    <button
-      [attr.data-modal-hide]="'delete-modal_' + task.id"
-      (click)="this.deleteTask(task.id)"
-      type="button"
-      class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-    >
-      Delete
-    </button>
-  </ng-container>
-</app-modal>
+<app-edit-task [task]="task"></app-edit-task>
+<app-delete-task [task]="task"></app-delete-task>
