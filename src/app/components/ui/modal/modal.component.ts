@@ -12,7 +12,8 @@ import { NgIf } from '@angular/common';
 export class ModalComponent {
   constructor(public sanitized: DomSanitizer) {}
 
-  @Input() header?: string = '';
+  @Input()
+  header?: string = '';
   @Input() body: string = '';
   @Input() footer?: string = '';
   @Input() id: string = '';

@@ -1,6 +1,7 @@
 export default interface Task {
-  dueDate: string;
+  dueDate?: string;
   text: string;
   id: string;
-  completed: boolean;
+  description?: string;
+  completed: 'true' | 'false';
 }
