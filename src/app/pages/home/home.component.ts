@@ -5,6 +5,7 @@ import { TaskComponent } from '../../components/task/task.component';
 import { Task } from '../../interfaces';
 import { TaskService } from '../../components/task/task.service';
 import { ActivatedRoute } from '@angular/router';
+import taskGenerator from '../../utils/taskGenerator';
 
 @Component({
   selector: 'app-home',
@@ -40,6 +41,12 @@ export class HomeComponent implements OnInit {
         default:
           this.tasksService.filterTasksByStatus(null);
       }
+    });
+  }
+
+  generateTasks() {
+    taskGenerator(10).forEach((task) => {
+      this.tasksService.addTask(task);
     });
   }
 }

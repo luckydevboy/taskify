@@ -22,7 +22,7 @@ export class AddTaskComponent {
     this.tasksService.addTask({
       id: uuidv4(),
       text: task,
-      createdAt: today.toISOString().split('T')[0],
+      dueDate: today.toISOString().split('T')[0],
       completed: false,
     });
     this.newTask = '';
