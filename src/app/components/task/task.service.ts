@@ -56,7 +56,7 @@ export class TaskService {
       // FIXME: Make it type safe when getting data from the form
       this.tasksChanged.emit([
         ...this.tasks.filter(
-          (task) => Boolean(task.completed) === Boolean(completed),
+          (task) => (task.completed === 'true') === completed,
         ),
       ]);
     } else {
