@@ -21,7 +21,7 @@
         clip-rule="evenodd"
       />
     </svg>
-    <p class="text-sm" [ngClass]="{ 'line-through': task.completed === 'true' }">
+    <p class="text-sm dark:text-gray-400" [ngClass]="{ 'line-through': task.completed === 'true' }">
       {{ task.text }}
     </p>
   </div>

@@ -8,6 +8,7 @@ import { TaskComponent } from './components/task/task.component';
 import { NgForOf, NgIf } from '@angular/common';
 import { ModalComponent } from './components/ui/modal/modal.component';
 import { TaskService } from './components/task/task.service';
+import { darkMode } from './utils';
 
 @Component({
   selector: 'app-root',
@@ -28,5 +29,6 @@ import { TaskService } from './components/task/task.service';
 export class AppComponent implements OnInit {
   ngOnInit() {
     initFlowbite();
+    darkMode();
   }
 }
