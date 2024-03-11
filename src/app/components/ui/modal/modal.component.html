@@ -7,7 +7,7 @@
   <div class="relative p-4 w-full max-w-2xl max-h-full">
     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
       <div
-        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-white/50"
       >
         <header class="text-xl font-semibold dark:text-white">
           <ng-content select="[header]"></ng-content>
@@ -35,12 +35,12 @@
           <span class="sr-only">Close modal</span>
         </button>
       </div>
-      <main class="p-4 md:p-5">
+      <main class="p-4 md:p-5 dark:text-white">
         <ng-content select="[body]"></ng-content>
       </main>
       <!--   FIXME: show footer when it's available   -->
       <footer
-        class="text-end p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
+        class="text-end p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-white/50"
       >
         <ng-content select="[footer]"></ng-content>
       </footer>
